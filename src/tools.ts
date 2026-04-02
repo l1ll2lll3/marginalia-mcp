@@ -50,14 +50,22 @@ export function registerTools(server: McpServer) {
         }
 
         // Book appearances
-        if (entry.books) {
+        if ((entry as any).per_book) {
+          text += "**Appearances:**\n";
+          for (const [bookId, bookData] of Object.entries((entry as any).per_book as Record<string, { frequency: number }>)) {
+            text += `  ${bookId}: ${bookData.frequency}x\n`;
+          }
+          text += "\n";
+        }
+
+        // Literary examples
+        if ((entry as any).examples?.length) {
           text += "**In Literature:**\n";
-          for (const [bookId, bookData] of Object.entries(entry.books)) {
-            text += `_${bookId}_ (${bookData.frequency}x):\n`;
-            for (const sent of (bookData.sentences || []).slice(0, 2)) {
-              text += `  Ch.${sent.chapter}: "${sent.text}"\n`;
-              if (sent.ko) text += `  → ${sent.ko}\n`;
-            }
+          for (const ex of (entry as any).examples.slice(0, 4)) {
+            text += `  _${ex.book_title}_ Ch.${ex.chapter}:\n`;
+            text += `  "${ex.text}"\n`;
+            if (ex.translation_ko) text += `  → ${ex.translation_ko}\n`;
+            text += "\n";
           }
         }
 
