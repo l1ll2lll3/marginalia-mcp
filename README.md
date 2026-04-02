@@ -1,5 +1,7 @@
 # Marginalia MCP Server
 
+[![npm](https://img.shields.io/npm/v/marginalia-mcp)](https://npmjs.com/package/marginalia-mcp)
+
 > 소설 속 단어를 찾고, 캐릭터를 비교하고, 감정의 흐름을 탐색하는 MCP 서버
 
 AI 어시스턴트(Claude, Codex, Gemini)에서 자연어로 문학 데이터를 조회할 수 있습니다.
@@ -21,7 +23,7 @@ AI 어시스턴트(Claude, Codex, Gemini)에서 자연어로 문학 데이터를
 
 ### Claude Code (CLI)
 ```bash
-claude mcp add marginalia -- npx tsx /path/to/marginalia-mcp/src/index.ts
+claude mcp add marginalia -- npx marginalia-mcp
 ```
 
 ### Claude Desktop
@@ -33,18 +35,19 @@ claude mcp add marginalia -- npx tsx /path/to/marginalia-mcp/src/index.ts
   "mcpServers": {
     "marginalia": {
       "command": "npx",
-      "args": ["tsx", "/path/to/marginalia-mcp/src/index.ts"]
+      "args": ["marginalia-mcp"]
     }
   }
 }
 ```
 
-### npm 배포 후 (예정)
-```bash
-claude mcp add marginalia -- npx marginalia-mcp
-```
-
 설치 후 **Claude를 재시작**하면 도구가 활성화됩니다.
+
+### 개발자용 (소스에서 실행)
+```bash
+git clone https://github.com/l1ll2lll3/marginalia-mcp.git
+claude mcp add marginalia -- npx tsx /path/to/marginalia-mcp/src/index.ts
+```
 
 ---
 
